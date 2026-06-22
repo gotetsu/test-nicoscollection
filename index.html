@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>test.nicoscollection.com</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital@0;1&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --accent: #e8ff47;
+      --text: #c8c8c8;
+      --dim: #444;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem;
+      max-width: 640px;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      border: 1px solid var(--accent);
+      padding: 0.3rem 0.8rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 400;
+      line-height: 1;
+      color: #fff;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .sub {
+      font-size: 0.75rem;
+      color: var(--dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--dim);
+      border: 1px solid var(--dim);
+      margin-bottom: 3rem;
+    }
+
+    .cell {
+      background: var(--bg);
+      padding: 1.2rem 0.8rem;
+      transition: background 0.2s;
+    }
+
+    .cell:hover {
+      background: #161616;
+    }
+
+    .cell-num {
+      font-size: 1.6rem;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .cell-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .blink {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      animation: blink 1.2s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .status {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--dim);
+      text-transform: uppercase;
+    }
+
+    .status strong {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="container">
+    <span class="tag">test environment</span>
+    <h1>Nico's<br/><span>Lab</span></h1>
+    <p class="sub">test.nicoscollection.com &mdash; staging zone</p>
+
+    <div class="grid">
+      <div class="cell">
+        <span class="cell-num">01</span>
+        <span class="cell-label">Environment</span>
+      </div>
+      <div class="cell">
+        <span class="cell-num">CF</span>
+        <span class="cell-label">Pages CDN</span>
+      </div>
+      <div class="cell">
+        <span class="cell-num">∞</span>
+        <span class="cell-label">Uptime</span>
+      </div>
+    </div>
+
+    <p class="status">
+      <span class="blink"></span>
+      System online &mdash; served via <strong>Cloudflare Pages</strong>
+    </p>
+  </div>
+</body>
+</html>
